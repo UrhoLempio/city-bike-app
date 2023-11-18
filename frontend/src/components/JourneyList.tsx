@@ -1,13 +1,12 @@
 import { TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody} from "@mui/material";
 import { Journey } from "../api/Api";
-import { Link } from "react-router-dom";
 export interface JourneyListProps{
     journeyList: Journey[]
     listType: 'Departure'|'Return';
 }
 export default function JourneyList({journeyList, listType}: JourneyListProps){
-    return(
-        <TableContainer component={Paper} style={{ maxHeight: 500 }}>
+  return(
+    <TableContainer component={Paper} style={{ maxHeight: 500 }}>
       <Table aria-label="simple table" stickyHeader>
         <TableHead>
           <TableRow>
@@ -25,9 +24,7 @@ export default function JourneyList({journeyList, listType}: JourneyListProps){
                 key={journey.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {journey.id}
-              </TableCell>
+              <TableCell component="th" scope="row">{journey.id}</TableCell>
               <TableCell align="left">{new Date(journey.departure_date_time).toLocaleString()}</TableCell>
               <TableCell align="left">{new Date(journey.return_date_time).toLocaleString()}</TableCell>
               <TableCell align="left">{listType == 'Return' ? journey.departure_station_id : journey.return_station_id}</TableCell>

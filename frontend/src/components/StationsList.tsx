@@ -5,9 +5,9 @@ export interface StationsListProps{
     stationsList: StationResponse[]
 }
 export default function StationsList({stationsList}: StationsListProps){
-    return(
-        <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+  return(
+    <TableContainer component={Paper}>
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="left">Station id</TableCell>

@@ -1,8 +1,7 @@
 import {useQuery} from 'react-query'
-import { Journey, StationResponse, departures, returns, station } from '../api/Api';
+import { Journey, departures, returns } from '../api/Api';
 import { AxiosError } from 'axios';
-import { Stack, Card, CardContent, Typography, CardActions, Button, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { Stack, Typography, CircularProgress } from '@mui/material';
 import JourneyList from './JourneyList';
 export interface JourneyViewProps{
     listType: 'Departure'|'Return';
@@ -21,7 +20,6 @@ export default function JourneyView({listType, stationId}: JourneyViewProps){
     if(journeyQuery.isFetching){
         return <CircularProgress/>
     }
-    //return <div>{JSON.stringify(stationsQuery.data as StationResponse[])}</div>
     const journeyResponse = journeyQuery.data as Journey[]
     let durationSum = 0
     let distanceSum = 0
@@ -41,7 +39,7 @@ export default function JourneyView({listType, stationId}: JourneyViewProps){
         <Typography align="left" gutterBottom variant="h5" component="div">
             {`Average distance: ${(distanceSum/journeyResponse.length/1000).toFixed(2)} kilometers`}
         </Typography>
-    <JourneyList journeyList={journeyResponse} listType={listType}/>
+        <JourneyList journeyList={journeyResponse} listType={listType}/>
     </Stack>
     )
 }
