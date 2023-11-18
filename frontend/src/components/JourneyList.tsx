@@ -7,8 +7,8 @@ export interface JourneyListProps{
 }
 export default function JourneyList({journeyList, listType}: JourneyListProps){
     return(
-        <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer component={Paper} style={{ maxHeight: 500 }}>
+      <Table aria-label="simple table" stickyHeader>
         <TableHead>
           <TableRow>
             <TableCell align="left">Journey id</TableCell>

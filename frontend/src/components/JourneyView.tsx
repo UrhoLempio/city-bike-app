@@ -30,16 +30,16 @@ export default function JourneyView({listType, stationId}: JourneyViewProps){
     return(
     <Stack>
         <Typography gutterBottom variant="h5" component="div">
-            {listType}
+            {listType == 'Departure' ? 'Departures' : 'Returns'}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography align="left" gutterBottom variant="h5" component="div">
             {`Amount: ${journeyResponse.length}`}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-            {`Average duration: ${durationSum/journeyResponse.length}`}
+        <Typography align="left" gutterBottom variant="h5" component="div">
+            {`Average duration: ${(durationSum/journeyResponse.length/60).toFixed(2)} minutes`}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-            {`Average distance: ${distanceSum/journeyResponse.length}`}
+        <Typography align="left" gutterBottom variant="h5" component="div">
+            {`Average distance: ${(distanceSum/journeyResponse.length/1000).toFixed(2)} kilometers`}
         </Typography>
     <JourneyList journeyList={journeyResponse} listType={listType}/>
     </Stack>

@@ -27,12 +27,13 @@ export default function StationsPage(){
         <Typography variant="body2" color="text.secondary">
           {stationResponse[0].station_address}
         </Typography>
-      </CardContent>
-                </Card>
-                <Stack direction={'row'}>
+        <Stack direction={{md: 'column', lg: 'row'}}>
                 <JourneyView stationId={stationResponse[0].id} listType='Departure'/>
                 <JourneyView stationId={stationResponse[0].id} listType='Return'/>
                 </Stack>
+      </CardContent>
+                </Card>
+                
         </Stack>
     )
 }
