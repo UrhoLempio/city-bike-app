@@ -2,8 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Router from './Router'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-function App() {
+/*function App() {
   const [count, setCount] = useState(0)
 
   return (
@@ -30,6 +32,29 @@ function App() {
       </p>
     </>
   )
+}*/
+function App() {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false,
+        refetchOnMount: true,
+        refetchOnReconnect: false,
+        retry: false,
+        // eslint-disable-next-line no-magic-numbers
+        cacheTime: 1000,
+        // eslint-disable-next-line no-magic-numbers
+        staleTime: 0,
+      },
+    },
+  });
+  return (
+    <>
+        <QueryClientProvider client={queryClient}>
+            <Router />
+        </QueryClientProvider>
+    </>
+  );
 }
 
 export default App
