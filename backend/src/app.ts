@@ -14,6 +14,7 @@ app.get('/stations', async (req, res) => {
     const users = await sql`
     SELECT * FROM "station"
     `
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(users);
 });
 
@@ -23,6 +24,7 @@ app.get('/stations/:id', async (req, res) => {
     SELECT * FROM "station"
     WHERE id = ${id}
     `
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(users);
 });
 
@@ -32,6 +34,7 @@ app.get('/stations/:id/departures', async (req, res) => {
     SELECT * FROM "journey"
     WHERE departure_station_id = ${id}
     `
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(users);
 });
 
@@ -41,6 +44,7 @@ app.get('/stations/:id/returns', async (req, res) => {
     SELECT * FROM "journey"
     WHERE return_station_id = ${id}
     `
+    res.header("Access-Control-Allow-Origin", "*");
     res.send(users);
 });
 
